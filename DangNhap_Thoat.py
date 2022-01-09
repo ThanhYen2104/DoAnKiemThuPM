@@ -7,7 +7,7 @@ driver.maximize_window()
 driver.get('https://thegioiskinfood.com/')
 
 # Đóng quảng cáo
-driver.implicitly_wait(13)
+driver.implicitly_wait(15)
 driver.find_element(B.CLASS_NAME,'windownpopup_close').click()
 
 # Đóng MessagesBox

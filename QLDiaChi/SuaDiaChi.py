@@ -66,7 +66,7 @@ provinceType = S(driver.find_element(B.XPATH,
 provinceType.select_by_value("Hồ Chí Minh")
 time.sleep(3)
 driver.find_element(B.CSS_SELECTOR,
-                    '#address_form_1093417115 > div:nth-child(5) > button').click()
+                    'div.edit-address > div:nth-child(5) > button').click()
 
 # Thoát account
 driver.find_element(B.CSS_SELECTOR,

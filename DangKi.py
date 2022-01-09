@@ -33,7 +33,7 @@ driver.find_element(
 driver.switch_to.default_content()
 # Đăng kí
 driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
-driver.find_element(B.XPATH,'//*[@id="sidenav"]/div/div[5]/div[3]/div/div[2]/a').click()
+driver.find_element(B.CSS_SELECTOR,'div.sidenav-account-foot-wrap > div.sidenav-account-foot-signup > a').click()
 
 
 #Điền thông tin
