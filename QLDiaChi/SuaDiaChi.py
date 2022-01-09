@@ -3,13 +3,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By as B
 from selenium.webdriver.support.ui import Select as S
 
-driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
+driver = webdriver.Chrome(executable_path='../venv/chromedriver.exe')
 driver.maximize_window()
 driver.get('https://thegioiskinfood.com/')
 
 # Đóng quảng cáo
 driver.implicitly_wait(13)
-driver.find_element(B.CLASS_NAME,'windownpopup_close').click()
+driver.find_element(B.CLASS_NAME, 'windownpopup_close').click()
 
 # Đóng MessagesBox
 time.sleep(2)
@@ -30,11 +30,11 @@ driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input'
 time.sleep(3)
 driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
 
-#Sửa địa chỉ
+# Sửa địa chỉ
 driver.find_element(B.CSS_SELECTOR,
                     '#account-page > div > div.account-page-wrap > div.account-page-sidebar > '
                     'div.account-sidebar-menu > ul > li:nth-child(3) > a').click()
-#Tìm đến phần tử sửa của địa chỉ phụ
+# Tìm đến phần tử sửa của địa chỉ phụ
 driver.find_element(B.CSS_SELECTOR,
                     'div.address-item-action > a:nth-child(1)').click()
 time.sleep(4)
@@ -57,18 +57,18 @@ time.sleep(3)
 driver.find_element(B.XPATH,
                     '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[5]/input').send_keys("220 Nguyen Kiem, Q.Go Vap, TP.HCM")
 time.sleep(3)
-countryType=S(driver.find_element(B.XPATH,
+countryType = S(driver.find_element(B.XPATH,
                                   '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[7]/select'))
 countryType.select_by_value("Vietnam")
 time.sleep(3)
-provinceType=S(driver.find_element(B.XPATH,
+provinceType = S(driver.find_element(B.XPATH,
                                    '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[8]/select'))
 provinceType.select_by_value("Hồ Chí Minh")
 time.sleep(3)
 driver.find_element(B.CSS_SELECTOR,
                     '#address_form_1093417115 > div:nth-child(5) > button').click()
 
-#Thoát account
+# Thoát account
 driver.find_element(B.CSS_SELECTOR,
                     '#account-page > div > div > div.account-page-sidebar > '
                     'div.account-sidebar-menu > ul > li:nth-child(6) > a').click()
