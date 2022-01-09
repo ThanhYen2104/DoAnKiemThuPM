@@ -8,7 +8,7 @@ driver.maximize_window()
 driver.get("https://thegioiskinfood.com/")
 
 #Khai bao input
-with open("AccountList.csv", newline="") as f:
+with open("QLTKDangKi/AccountList.csv", newline="") as f:
     reader = csv.DictReader(f)
     for row in reader:
         L_Name = row["LastName"]
