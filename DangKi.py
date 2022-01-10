@@ -36,7 +36,7 @@ driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
 driver.find_element(B.CSS_SELECTOR,'div.sidenav-account-foot-wrap > div.sidenav-account-foot-signup > a').click()
 
 
-#Điền thông tin
+# Điền thông tin
 driver.find_element(B.NAME, "customer[last_name]").send_keys(L_Name)
 time.sleep(2)
 driver.find_element(B.NAME, "customer[first_name]").send_keys(F_Name)
@@ -48,5 +48,10 @@ time.sleep(2)
 driver.find_element(B.CSS_SELECTOR,'#create_customer > div:nth-child(7) > input').send_keys(PhoneNumber)
 time.sleep(2)
 driver.find_element(B.XPATH, '//*[@id="create_customer"]/div[6]/button').click()
+
+#Thoát account
+driver.find_element(B.CSS_SELECTOR,
+                    '#account-page > div > div > div.account-page-sidebar > '
+                    'div.account-sidebar-menu > ul > li:nth-child(6) > a').click()
 
 driver.quit()

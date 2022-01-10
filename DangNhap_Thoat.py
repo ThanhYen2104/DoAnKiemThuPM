@@ -7,8 +7,8 @@ driver.maximize_window()
 driver.get('https://thegioiskinfood.com/')
 
 # Đóng quảng cáo
-driver.implicitly_wait(15)
-driver.find_element(B.CLASS_NAME,'windownpopup_close').click()
+driver.implicitly_wait(17)
+driver.find_element(B.CLASS_NAME, 'windownpopup_close').click()
 
 # Đóng MessagesBox
 time.sleep(2)
@@ -23,7 +23,7 @@ driver.switch_to.default_content()
 
 # Đăng nhập
 driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
-driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys("mailtest3@gmail.com")
+driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys("mailtest10@gmail.com")
 time.sleep(3)
 driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys("123456789hihi")
 time.sleep(3)

@@ -8,8 +8,8 @@ with open("AccountList.csv", "w", newline="") as f:
         {
             "LastName": "Le",
             "FirstName": "Ji",
-            "Email": "mailtest7@gmail.com",
-            "CreatePassword": "123456789yen",
+            "Email": "mailtest4@gmail.com",
+            "CreatePassword": "123456789hihi",
             "PhoneNumber": "0274548392",
         }
     )
