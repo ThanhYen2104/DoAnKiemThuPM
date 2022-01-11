@@ -14,8 +14,8 @@ class QuanLyDonHang():
         with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                Email = row["Email"]
-                Password = row["Password"]
+                email = row["Email"]
+                password = row["Password"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(15)
@@ -34,9 +34,9 @@ class QuanLyDonHang():
 
         # Đăng nhập
         driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
-        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(Email)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(email)
         time.sleep(3)
-        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(Password)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(password)
         time.sleep(3)
         driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
 

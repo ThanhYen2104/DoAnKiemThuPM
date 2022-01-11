@@ -19,17 +19,17 @@ class QuanLyInput_Output():
         with open("AccountListSignUp.csv", newline="") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                L = row["LastName"]
-                F = row["FirstName"]
-                E = row["Email"]
-                P = row["CreatePassword"]
-                PN = row["PhoneNumber"]
+                l_Name = row["LastName"]
+                f_Name = row["FirstName"]
+                email = row["Email"]
+                passwordCreate = row["CreatePassword"]
+                phoneNumber = row["PhoneNumber"]
 
-        print(L)
-        print(F)
-        print(E)
-        print(P)
-        print(PN)
+        print(l_Name)
+        print(f_Name)
+        print(email)
+        print(passwordCreate)
+        print(phoneNumber)
 
     def demo_Input_Output_DangNhap(self):
         with open("AccountListLogin.csv", "w", newline="") as f:
@@ -46,10 +46,10 @@ class QuanLyInput_Output():
         with open("AccountListLogin.csv", newline="") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                E = row["Email"]
-                P = row["Password"]
-        print(E)
-        print(P)
+                email = row["Email"]
+                password = row["Password"]
+        print(email)
+        print(password)
 
 
 qlDiaChi = QuanLyInput_Output()

@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By as B
 import time
 
+
 class QuanLyTaiKhoan():
     def demo_DangNhap(self):
         driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
@@ -10,10 +11,10 @@ class QuanLyTaiKhoan():
         driver.get('https://thegioiskinfood.com/')
 
         with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
-                    reader = csv.DictReader(f)
-                    for row in reader:
-                        Email = row["Email"]
-                        Password = row["Password"]
+            reader = csv.DictReader(f)
+            for row in reader:
+                email = row["Email"]
+                password = row["Password"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(15)
@@ -32,13 +33,13 @@ class QuanLyTaiKhoan():
 
         # Đăng nhập
         driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
-        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(Email)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(email)
         time.sleep(3)
-        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(Password)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(password)
         time.sleep(3)
         driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
 
-        #Thoát account
+        # Thoát account
         driver.find_element(B.CSS_SELECTOR,
                             '#account-page > div > div > div.account-page-sidebar > '
                             'div.account-sidebar-menu > ul > li:nth-child(6) > a').click()
@@ -50,19 +51,19 @@ class QuanLyTaiKhoan():
         driver.maximize_window()
         driver.get("https://thegioiskinfood.com/")
 
-        #Khai bao input
+        # Khai bao input
         with open("QLTKDangKi/AccountList.csv", newline="") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                L_Name = row["LastName"]
-                F_Name = row["FirstName"]
-                Email = row["Email"]
-                Password = row["CreatePassword"]
-                PhoneNumber = row["PhoneNumber"]
+                l_Name = row["LastName"]
+                f_Name = row["FirstName"]
+                email = row["Email"]
+                password = row["CreatePassword"]
+                phoneNumber = row["PhoneNumber"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(13)
-        driver.find_element(B.CLASS_NAME,'windownpopup_close').click()
+        driver.find_element(B.CLASS_NAME, 'windownpopup_close').click()
 
         # Đóng MessagesBox
         time.sleep(5)
@@ -76,23 +77,23 @@ class QuanLyTaiKhoan():
         driver.switch_to.default_content()
         # Đăng kí
         driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
-        driver.find_element(B.CSS_SELECTOR,'div.sidenav-account-foot-wrap > div.sidenav-account-foot-signup > a').click()
-
+        driver.find_element(B.CSS_SELECTOR,
+                            'div.sidenav-account-foot-wrap > div.sidenav-account-foot-signup > a').click()
 
         # Điền thông tin
-        driver.find_element(B.NAME, "customer[last_name]").send_keys(L_Name)
+        driver.find_element(B.NAME, "customer[last_name]").send_keys(l_Name)
         time.sleep(2)
-        driver.find_element(B.NAME, "customer[first_name]").send_keys(F_Name)
+        driver.find_element(B.NAME, "customer[first_name]").send_keys(f_Name)
         time.sleep(2)
-        driver.find_element(B.CSS_SELECTOR, "#create_customer > div:nth-child(5) > input").send_keys(Email)
+        driver.find_element(B.CSS_SELECTOR, "#create_customer > div:nth-child(5) > input").send_keys(email)
         time.sleep(2)
-        driver.find_element(B.CSS_SELECTOR, "#create_customer > div:nth-child(6) > input").send_keys(Password)
+        driver.find_element(B.CSS_SELECTOR, "#create_customer > div:nth-child(6) > input").send_keys(password)
         time.sleep(2)
-        driver.find_element(B.CSS_SELECTOR,'#create_customer > div:nth-child(7) > input').send_keys(PhoneNumber)
+        driver.find_element(B.CSS_SELECTOR, '#create_customer > div:nth-child(7) > input').send_keys(phoneNumber)
         time.sleep(2)
         driver.find_element(B.XPATH, '//*[@id="create_customer"]/div[6]/button').click()
 
-        #Thoát account
+        # Thoát account
         driver.find_element(B.CSS_SELECTOR,
                             '#account-page > div > div > div.account-page-sidebar > '
                             'div.account-sidebar-menu > ul > li:nth-child(6) > a').click()
