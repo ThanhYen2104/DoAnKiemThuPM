@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By as B
 from selenium.webdriver.support.ui import Select as S
 
+
 class QuanLyDiaChi():
     def demo_ThemDiaChiMoi(self):
         driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
@@ -11,10 +12,10 @@ class QuanLyDiaChi():
         driver.get('https://thegioiskinfood.com/')
 
         with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
-                    reader = csv.DictReader(f)
-                    for row in reader:
-                        Email = row["Email"]
-                        Password = row["Password"]
+            reader = csv.DictReader(f)
+            for row in reader:
+                Email = row["Email"]
+                Password = row["Password"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(13)
@@ -79,10 +80,10 @@ class QuanLyDiaChi():
         driver.get('https://thegioiskinfood.com/')
 
         with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
-                    reader = csv.DictReader(f)
-                    for row in reader:
-                        Email = row["Email"]
-                        Password = row["Password"]
+            reader = csv.DictReader(f)
+            for row in reader:
+                Email = row["Email"]
+                Password = row["Password"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(13)
@@ -115,29 +116,36 @@ class QuanLyDiaChi():
         driver.find_element(B.CSS_SELECTOR,
                             'div.address-item-action > a:nth-child(1)').click()
         time.sleep(4)
-        driver.find_element(B.XPATH,'/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[1]/input').clear()
-        driver.find_element(B.CLASS_NAME,'/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[1]/input').send_keys("Le")
+        driver.find_element(B.XPATH,
+                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[1]/input').clear()
+        driver.find_element(B.CLASS_NAME,
+                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[1]/input').send_keys(
+            "Le")
         time.sleep(3)
         driver.find_element(B.XPATH,
                             '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[2]/input').clear()
         driver.find_element(B.XPATH,
-                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[2]/input').send_keys("Ji")
+                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[2]/input').send_keys(
+            "Ji")
         time.sleep(3)
         driver.find_element(B.XPATH,
-                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[3]/input').send_keys("TNHH 555555")
+                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[3]/input').send_keys(
+            "TNHH 555555")
         time.sleep(3)
         driver.find_element(B.XPATH,
-                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[3]/input').send_keys("0832325462")
+                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[3]/input').send_keys(
+            "0832325462")
         time.sleep(3)
         driver.find_element(B.XPATH,
-                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[5]/input').send_keys("220 Nguyen Kiem, Q.Go Vap, TP.HCM")
+                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[5]/input').send_keys(
+            "220 Nguyen Kiem, Q.Go Vap, TP.HCM")
         time.sleep(3)
         countryType = S(driver.find_element(B.XPATH,
-                                          '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[7]/select'))
+                                            '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[7]/select'))
         countryType.select_by_value("Vietnam")
         time.sleep(3)
         provinceType = S(driver.find_element(B.XPATH,
-                                           '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[8]/select'))
+                                             '/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[8]/select'))
         provinceType.select_by_value("Hồ Chí Minh")
         time.sleep(3)
         driver.find_element(B.CSS_SELECTOR,
@@ -156,10 +164,10 @@ class QuanLyDiaChi():
         driver.get("https://thegioiskinfood.com/")
 
         with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
-                    reader = csv.DictReader(f)
-                    for row in reader:
-                        Email = row["Email"]
-                        Password = row["Password"]
+            reader = csv.DictReader(f)
+            for row in reader:
+                Email = row["Email"]
+                Password = row["Password"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(13)
@@ -190,7 +198,7 @@ class QuanLyDiaChi():
                             'div.account-sidebar-menu > ul > li:nth-child(3) > a').click()
         time.sleep(3)
         driver.find_element(B.XPATH,
-                            "/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[1]/div[4]/a[2]",).click()
+                            "/html/body/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div[2]/div[1]/div[4]/a[2]", ).click()
         time.sleep(3)
         driver.switch_to.alert.accept()
         time.sleep(2)
@@ -205,5 +213,5 @@ class QuanLyDiaChi():
 
 qlDiaChi = QuanLyDiaChi()
 qlDiaChi.demo_ThemDiaChiMoi()
-qlDiaChi.demo_SuaDiaChi()
-qlDiaChi.demo_XoaDiaChi()
+# qlDiaChi.demo_SuaDiaChi()
+# qlDiaChi.demo_XoaDiaChi()
