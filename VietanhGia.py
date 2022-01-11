@@ -1,3 +1,4 @@
+import csv
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -7,6 +8,12 @@ class QuanLySanPham():
         driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
         driver.maximize_window()
         driver.get('https://thegioiskinfood.com/')
+
+        with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        Email = row["Email"]
+                        Password = row["Password"]
 
         # Đóng quảng cáo
         driver.implicitly_wait(15)
@@ -25,8 +32,10 @@ class QuanLySanPham():
 
         # Login
         driver.find_element(By.CLASS_NAME, 'f-header-top-icon-account').click()
-        driver.find_element(By.NAME, "customer[email]").send_keys("phuong211zz@gmail.com")
-        driver.find_element(By.NAME, "customer[password]").send_keys("A2345768")
+        # driver.find_element(By.NAME, "customer[email]").send_keys("phuong211zz@gmail.com")
+        # driver.find_element(By.NAME, "customer[password]").send_keys("A2345768")
+        driver.find_element(By.NAME, "customer[email]").send_keys(Email)
+        driver.find_element(By.NAME, "customer[password]").send_keys(Password)
         driver.find_element(By.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
 
         # Choose_prodution
