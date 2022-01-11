@@ -201,6 +201,8 @@ class QuanLySanPham():
                                             'div.starbap-question-form-wrapper > form >'
                                             ' div.starbap-form__question-fieldset > input').click()
         time.sleep(5)
+
+
         driver.quit()
 
     def demo_VietDanhGia(self):
@@ -255,8 +257,13 @@ class QuanLySanPham():
         driver.find_element(B.NAME, "review_title").send_keys("comment")
         driver.find_element(B.NAME, "review_body").send_keys("Sản phẩm tốt, đúng như quảng cáo!")
 
-        driver.find_element(B.LINK_TEXT, value='Gửi đánh giá').click()
+        # driver.find_element(B.LINK_TEXT, value='Gửi đánh giá').click()
 
+        # Thoát account
+        driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
+        driver.find_element(B.CSS_SELECTOR,
+                            '#account-page > div > div > div.account-page-sidebar > '
+                            'div.account-sidebar-menu > ul > li:nth-child(6) > a').click()
         driver.quit()
 
     def demo_XemDanhGia1SP(self):
@@ -341,10 +348,187 @@ class QuanLySanPham():
         time.sleep(5)
         driver.quit()
 
+    def demo_ThemSanPhamVaoGio(self):
+        driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
+        driver.maximize_window()
+        driver.get('https://thegioiskinfood.com/')
 
-qlDiaChi = QuanLySanPham()
-qlDiaChi.demo_XemThongTin1SP()
-# qlDiaChi.demo_XemThongTinNhieuSP()
-# qlDiaChi.demo_DatCauHoi()
-# qlDiaChi.demo_VietDanhGia()
-# qlDiaChi.demo_XemDanhGia1SP()
+        with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                email = row["Email"]
+                password = row["Password"]
+
+        # Đóng quảng cáo
+        driver.implicitly_wait(15)
+        driver.find_element(B.CLASS_NAME, 'windownpopup_close').click()
+
+        # Đóng MessagesBox
+        time.sleep(2)
+        iframeMes = driver.find_element(B.XPATH, '//*[@id="fb-root"]/div[2]/span/iframe')
+        driver.switch_to.frame(iframeMes)
+        time.sleep(4)
+        driver.find_element(
+            B.XPATH,
+            "/html/body/div/div/div/div/div/div/div/div/div/div[1]/div[3]/div[2]/div/div",
+        ).click()
+        driver.switch_to.default_content()
+
+        # Đăng nhập
+        driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(email)
+        time.sleep(3)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(password)
+        time.sleep(3)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
+
+        #tim kiem san pham
+        driver.find_element(B.CSS_SELECTOR,'#f-header > section.f-header-top > '
+                                           'div > div > div.f-header-top-search > '
+                                           'form > div > input').send_keys("son dưỡng unpa")
+        time.sleep(2)
+        driver.find_element(B.CSS_SELECTOR,
+                            '#f-header > section.f-header-top > div > div > div.f-header-top-search > '
+                            'form > div > button').click()
+        #them san pham
+        driver.find_element(B.CSS_SELECTOR,'#searchPage > div > div > div.searchPageBody > div > div.searchResultList > div:nth-child(2) > div > div.productImg > a').click()
+        driver.find_element(B.CSS_SELECTOR,'#product-swatch-item-option1 > div.product-swatch-item-element-wrap > div:nth-child(2) > label').click()
+        driver.find_element(B.ID,'addcart').click()
+
+    def demo_TimKiemSanPham(self):
+        driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
+        driver.maximize_window()
+        driver.get('https://thegioiskinfood.com/')
+
+        with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                email = row["Email"]
+                password = row["Password"]
+
+        # Đóng quảng cáo
+        driver.implicitly_wait(15)
+        driver.find_element(B.CLASS_NAME, 'windownpopup_close').click()
+
+        # Đóng MessagesBox
+        time.sleep(2)
+        iframeMes = driver.find_element(B.XPATH, '//*[@id="fb-root"]/div[2]/span/iframe')
+        driver.switch_to.frame(iframeMes)
+        time.sleep(4)
+        driver.find_element(
+            B.XPATH,
+            "/html/body/div/div/div/div/div/div/div/div/div/div[1]/div[3]/div[2]/div/div",
+        ).click()
+        driver.switch_to.default_content()
+
+        # Đăng nhập
+        driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(email)
+        time.sleep(3)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(password)
+        time.sleep(3)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
+
+        #tim kiem san pham
+        driver.find_element(B.CSS_SELECTOR,'#f-header > section.f-header-top > '
+                                           'div > div > div.f-header-top-search > '
+                                           'form > div > input').send_keys("son dưỡng unpa")
+        time.sleep(2)
+        driver.find_element(B.CSS_SELECTOR,
+                            '#f-header > section.f-header-top > div > div > div.f-header-top-search > '
+                            'form > div > button').click()
+
+    def demo_XemGioHang(self):
+        driver = webdriver.Chrome(executable_path='venv/chromedriver.exe')
+        driver.maximize_window()
+        driver.get('https://thegioiskinfood.com/')
+
+        with open("QLTKDangKi/AccountListLogin.csv", newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                email = row["Email"]
+                password = row["Password"]
+
+        # Đóng quảng cáo
+        driver.implicitly_wait(15)
+        driver.find_element(B.CLASS_NAME, 'windownpopup_close').click()
+
+        # Đóng MessagesBox
+        time.sleep(2)
+        iframeMes = driver.find_element(B.XPATH, '//*[@id="fb-root"]/div[2]/span/iframe')
+        driver.switch_to.frame(iframeMes)
+        time.sleep(4)
+        driver.find_element(
+            B.XPATH,
+            "/html/body/div/div/div/div/div/div/div/div/div/div[1]/div[3]/div[2]/div/div",
+        ).click()
+        driver.switch_to.default_content()
+
+        # Đăng nhập
+        driver.find_element(B.CLASS_NAME, "f-header-top-icon-account").click()
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(3) > input').send_keys(email)
+        time.sleep(3)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(4) > input').send_keys(password)
+        time.sleep(3)
+        driver.find_element(B.CSS_SELECTOR, '#customer_login > div:nth-child(6) > button.btn.btn-primary').click()
+
+
+        #tim kiem san pham
+        driver.find_element(B.CSS_SELECTOR,'#f-header > section.f-header-top > '
+                                           'div > div > div.f-header-top-search > '
+                                           'form > div > input').send_keys("son dưỡng unpa")
+        time.sleep(2)
+        driver.find_element(B.CSS_SELECTOR,
+                            '#f-header > section.f-header-top > div > div > div.f-header-top-search > '
+                            'form > div > button').click()
+        #them san pham
+        driver.find_element(B.CSS_SELECTOR,'#searchPage > div > div > div.searchPageBody > div > div.searchResultList > div:nth-child(2) > div > div.productImg > a').click()
+        driver.find_element(B.CSS_SELECTOR,'#product-swatch-item-option1 > div.product-swatch-item-element-wrap > div:nth-child(2) > label').click()
+        driver.find_element(B.ID,'addcart').click()
+        #xem gio hang
+        time.sleep(3)
+        driver.find_element(B.CLASS_NAME,'f-header-top-icon-cart').click()
+        #in gio hang
+        giohang=driver.find_elements(B.CLASS_NAME,'boxcontentcart')
+        for item in giohang:
+            tensanpham = item.find_element(B.CLASS_NAME,'vendorcart').text
+            thongtinsp = item.find_element(B.CLASS_NAME,'titlecart').text
+            giatiengoc = item.find_element(B.CSS_SELECTOR,
+                                            'div.price-cart > span').text
+            giatiengiam = item.find_element(B.CSS_SELECTOR,'div.price-cart > del').text
+
+            tonggiatien = item.find_element(B.CLASS_NAME,'price-cart_quantity').text
+            soluong = item.find_element(B.CLASS_NAME,'winputcartquantity').number
+
+            print(tensanpham)
+            print(thongtinsp)
+            print(giatiengiam)
+            print(giatiengoc)
+            print(tonggiatien)
+            print(soluong)
+
+            # xoa san pham
+            # driver.find_element(By.CSS_SELECTOR,'#cart-page > div.container > div.flexpagecart > div:nth-child(1) > div.cart-lines > div:nth-child(1) > div:nth-child(2) > div > div.removecart.mobilehide > a').click()
+
+qlSanPham = QuanLySanPham()
+
+# Xem thông tin của 1 sản phẩm
+# qlSanPham.demo_XemThongTin1SP()
+
+# Xem thông tin của nhiều sản phẩm
+# qlSanPham.demo_XemThongTinNhieuSP()
+
+# Đặt câu hỏi
+# qlSanPham.demo_DatCauHoi()
+
+# Viết đánh giá
+qlSanPham.demo_VietDanhGia()
+
+# Xem đánh giá của 1 sản phẩm
+# qlSanPham.demo_XemDanhGia1SP()
+
+# Thêm sản phẩm vào giỏ hàng
+# qlSanPham.demo_ThemSanPhamVaoGio()
+
+# Tìm kiếm sản phẩm
+# qlSanPham.demo_TimKiemSanPham()
